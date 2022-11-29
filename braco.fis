@@ -1,0 +1,47 @@
+[System]
+Name='braco'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=9
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Erro'
+Range=[-135 135]
+NumMFs=3
+MF1='Negativo':'trapmf',[-378 -162 -90 0]
+MF2='Zero':'trimf',[-45.4 0 45.3571428571429]
+MF3='Positivo':'trapmf',[0 90 162 378]
+
+[Input2]
+Name='Velocidade'
+Range=[-3.2 3.2]
+NumMFs=3
+MF1='Negativa':'trapmf',[-5.6 -3.467 -2.35 0]
+MF2='Nula':'trimf',[-1.6 0.0023 1.57]
+MF3='Positiva':'trapmf',[0 2.35 3.467 5.6]
+
+[Output1]
+Name='Torque'
+Range=[-3.5 1.5]
+NumMFs=3
+MF1='Negativo':'trapmf',[-8 -4.58 -3.03 -2.60888407367281]
+MF2='Nulo':'trimf',[-0.05 0 0.05]
+MF3='Positivo':'trapmf',[0.268 0.538461538461538 5 8]
+
+[Rules]
+2 2, 2 (1) : 1
+2 3, 1 (1) : 1
+2 1, 3 (1) : 1
+1 2, 3 (1) : 1
+1 3, 2 (1) : 1
+1 1, 3 (1) : 1
+3 2, 1 (1) : 1
+3 3, 1 (1) : 1
+3 1, 2 (1) : 1
